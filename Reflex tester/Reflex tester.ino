@@ -1,6 +1,7 @@
-#define RED_PIN 4
-#define GREEN_PIN 1
-#define BLUE_PIN 2
+//problems are that lights is always green
+#define RED_PIN 7
+#define GREEN_PIN 2
+#define BLUE_PIN 4
 #define BUTTON_PIN 8
 
 unsigned long set_time;
@@ -16,9 +17,9 @@ void setup() {
   digitalWrite(BLUE_PIN, LOW);
 
   randomSeed(analogRead(0)); 
-  double set_time = millis() + random(6000, 11000);
+  unsigned long set_time = random(6000, 11000);
   Serial.println(set_time);
-  
+
   Serial.begin(9600);
 }
 
@@ -38,6 +39,9 @@ void loop() {
       Serial.println("You pressed the button in ");
       Serial.println(reaction_time);
       Serial.println(" ms");
+      while(1){
+        
+      }
     }
   }
 }
