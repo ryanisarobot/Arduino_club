@@ -39,10 +39,10 @@ void loop() {
     currentLED += dir;
 
     // Checks if LED is at the end of the row, if so go the other way
-    if (currentLED == 9){
+    if (currentLED == 13){
       dir = -1;
     }
-    if(currentLED == 0){
+    if(currentLED == 4){
       dir = 1;
     }
     // Resets timer so that we wait another delayTime until we change LEDs again
