@@ -22,6 +22,13 @@ void setup(){
   randomSeed(analogRead(0));
 }
 
+void loop(){
+  if(digitalRead(switchPin)){
+    rollTheDice();
+  }
+  delay(100);
+}
+
 void rollTheDice(){
   int result = 0;
   int lengthOfRoll = random(15, 25);
