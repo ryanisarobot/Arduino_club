@@ -14,30 +14,30 @@ int blank = 6;
 
 void setup(){
 
-  for(int i = 0; i < 7; i++){
+  for(int i = 0; i < 7; i++){ // Efficient way to set pins to output and turn off all LEDs
     pinMode(ledPins[i], OUTPUT);
     digitalWrite(ledPins[i], LOW);
   }
-  pinMode(switchPin, INPUT_PULLUP);
-  randomSeed(analogRead(0));
+  pinMode(switchPin, INPUT); // Sets the button to be recognized as input
+  randomSeed(analogRead(0)); // Sets the Arduino randomization to be truly randomized (other seeds will be biased)
 }
 
 void loop(){
   if(digitalRead(switchPin)){
-    rollTheDice();
+    rollTheDice(); // What is rollTheDice? It's the function that we later define
   }
   delay(100);
 }
 
 void rollTheDice(){
   int result = 0;
-  int lengthOfRoll = random(15, 25);
-  for(int i = 0; i < lengthOfRoll; i++){
+  int lengthOfRoll = random(15, 25); // Random time it will take to roll
+  for(int i = 0; i < lengthOfRoll; i++){ // This rolling animation attempts to make itself realistic
     result = random(0, 6);
     show(result);
     delay(50 + i * 10);
   }
-  for (int j = 0; j < 3; j++){
+  for (int j = 0; j < 3; j++){ // Flashes number once rolling animation is done
     show(blank);
     delay(500);
     show(result);
@@ -45,7 +45,7 @@ void rollTheDice(){
   }
 }
 
-void show(int result){
+void show(int result){ // The reason we create seperate functions is simply due to convenience and not repeating this over and over
   for(int i = 0; i < 7; i++){
     digitalWrite(ledPins[i], dicePatterns[result][i]);
   }
