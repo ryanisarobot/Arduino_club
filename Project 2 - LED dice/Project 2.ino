@@ -18,12 +18,12 @@ void setup(){
     pinMode(ledPins[i], OUTPUT);
     digitalWrite(ledPins[i], LOW);
   }
-  pinMode(switchPin, INPUT); // Sets the button to be recognized as input
+  pinMode(switchPin, INPUT_PULLUP); // Sets the button to be recognized as input
   randomSeed(analogRead(0)); // Sets the Arduino randomization to be truly randomized (other seeds will be biased)
 }
 
 void loop(){
-  if(digitalRead(switchPin)){
+  if(!digitalRead(switchPin)){
     rollTheDice(); // What is rollTheDice? It's the function that we later define
   }
   delay(100);
