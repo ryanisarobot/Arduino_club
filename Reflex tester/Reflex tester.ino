@@ -1,6 +1,6 @@
 #define RED_PIN 7
-#define GREEN_PIN 2
-#define BLUE_PIN 4
+#define GREEN_PIN 4
+#define BLUE_PIN 2
 #define BUTTON_PIN 8
 
 unsigned long set_time;
