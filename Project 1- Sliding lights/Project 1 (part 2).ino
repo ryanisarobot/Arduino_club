@@ -47,5 +47,8 @@ void loop() {
     }
     // Resets timer so that we wait another delayTime until we change LEDs again
     timeChanged = millis();
+
+    delayTime = analogRead(0);
+    delay(5)
   }
 }
