@@ -49,6 +49,6 @@ void loop() {
     timeChanged = millis();
 
     delayTime = analogRead(0);
-    delay(5)
+    delay(5);
   }
 }
