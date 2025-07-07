@@ -30,24 +30,24 @@ setLocked(true);
 
 void loop() {
 
-  char key = keypad.getKey();
+  char key = keypad.getKey(); // Again another function from the library that gets the input from the keypad
   if (key == '*' || key == '#'){
     position = 0;
-    setLocked(true);
+    setLocked(true); // If you look ahead, it may seem odd that we are inputing "false" (on line 43) or "true", but these translate into 0 and 1 respectively
   }
 
   if (key == secretCode[position]){
-    position++;
+    position++; // Moves along the input, as long as it has been so far corrct
   }
   if (position == 4){
-    setLocked(false);
+    setLocked(false); 
   }
 
   delay(100);
 }
 
 void setLocked(int locked){
-  if(locked){
+  if(locked){ // This may not make sense, but in this coding language any non-zero that is input into an if statement passes the conditional
     digitalWrite(redPin, HIGH);
     digitalWrite(greenPin, LOW);
   }
