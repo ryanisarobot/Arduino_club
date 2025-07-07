@@ -15,7 +15,7 @@ char keys[rows][cols] = {
 byte rowPins[rows] = {7, 2, 3, 5};
 byte colPins[cols] = {6, 8, 4};
 
-Keypad keypad = Keypad(makeKeymap(keys), rowPins, colPins, rows, cols); // If you don't recognize this function it's because it was imported as part of the library
+Keypad keypad = Keypad(makeKeymap(keys), rowPins, colPins, rows, cols); // If you don't recognize this function it's because it was imported as part of the library, it basically simplifies the process of connecting each number on the pad too the pins
 
 int redPin = 13;
 int greenPin = 12;
