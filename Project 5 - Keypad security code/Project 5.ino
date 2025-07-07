@@ -36,13 +36,16 @@ void loop() {
     setLocked(true); // If you look ahead, it may seem odd that we are inputing "false" (on line 43) or "true", but these translate into 0 and 1 respectively
   }
 
-  if (key == secretCode[position]){
+  else if (key == secretCode[position]){
     position++; // Moves along the input, as long as it has been so far corrct
+    if (position == 4){
+      setLocked(false); 
+    }
   }
-  if (position == 4){
-    setLocked(false); 
+  else{
+    position = 0;
+    setLocked(true);
   }
-
   delay(100);
 }
 
