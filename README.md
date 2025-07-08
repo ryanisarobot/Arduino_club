@@ -3,5 +3,5 @@ If you are a club member feel free to use any of the code to learn and email me 
 KEY:
 .gitkeep is just a placeholder file it has no code or anything
 .ino is a file containing code from arduino IDE
-.png is a picture of the circuit design from tinkercad
+.png/.jpg is a picture of the circuit design from tinkercad or a book
 .mp4 is a video demonstration of the circuit
