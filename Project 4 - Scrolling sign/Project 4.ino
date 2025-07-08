@@ -1,5 +1,6 @@
-int rowPin[] = {2,3,4,5,6,7,8,9};
-int colPin[] = {17,16,15,14,13,12,11,10};
+int rowPin[] = {2, 3, 4, 5, 6, 7, 8, 9};
+int colPin[] = {17, 16, 15, 14, 13, 12, 11, 10};
+
 byte smile[] = {
   B00111100,
   B01000010,
@@ -12,7 +13,7 @@ byte smile[] = {
 
 void setup() 
 {
-  for(int i = 0; i <8; i++){
+  for(int i = 0; i < 8; i++){
     pinMode(rowPin[i], OUTPUT);
     pinMode(colPin[i], OUTPUT);
   }
@@ -30,7 +31,6 @@ void displaySprite(){
       digitalWrite(rowPin[i], LOW);
     }
     for(int i = 0; i < 8; i++){
-
       if(i == count){
         digitalWrite(colPin[i], LOW);
       }
