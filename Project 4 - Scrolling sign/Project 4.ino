@@ -26,7 +26,7 @@ void loop()
 
 
 void displaySprite(){
-  for(int count = 0; count < 8; count ++){
+  for(int count = 0; count < 8; count++){
     for(int i = 0; i < 8 i++){
       digitalWrite(rowPin[i], LOW);
     }
