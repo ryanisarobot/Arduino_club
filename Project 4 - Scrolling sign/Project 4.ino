@@ -44,5 +44,6 @@ void displaySprite(){
         digitalWrite(rowPin[row], HIGH);
       }
     }
+    delay(1);
   }
 }
