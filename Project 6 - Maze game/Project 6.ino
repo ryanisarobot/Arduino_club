@@ -2,10 +2,15 @@
 
 Servo servo1;
 Servo servo2;
-int joyX = 0; // Analog pin for X-axis
-int joyY = 1; // Analog pin for Y-axis
 
-int servoVal;
+int joyXPin = A0; // Analog pin for X-axis
+int joyYPin = A1; // Analog pin for Y-axis
+
+const int servo1Min = 80;
+const int servo1Max = 105;
+const int servo2Min = 80;
+const int servo2Max = 105;
+
 unsigned long previousMillis = 0; // Timer variable for Serial output
 const long interval = 500;        // Interval for Serial output in milliseconds
 
@@ -18,16 +23,15 @@ void setup()
 
 void loop()
 {
-  // Read and map X-axis joystick value for servo1
-  servoVal = analogRead(joyX);
-  int servo1Pos = map(servoVal, 0, 1023, 180, 130);
+  int joyValX = analogRead(joyXPin);  // Read and map X-axis joystick value for servo1
+  int joyValY = analogRead(joyYPin);  // Read and map Y-axis joystick value for servo2
+  
+  int servo1Pos = map(joyValX, 0, 1023, servo1Min, servo1Max);
+  int servo2Pos = map(joyValY, 0, 1023, servo2Min, servo2Max);
+  
   servo1.write(servo1Pos);
-
-  // Read and map Y-axis joystick value for servo2
-  servoVal = analogRead(joyY);
-  int servo2Pos = map(servoVal, 0, 1023, 130, 180);
   servo2.write(servo2Pos);
-
+  
   // Check if the interval has elapsed for Serial output
   unsigned long currentMillis = millis();
   if (currentMillis - previousMillis >= interval) 
@@ -36,15 +40,15 @@ void loop()
 
     // Print joystick and servo positions to Serial Monitor
     Serial.print("Joystick X: ");
-    Serial.print(analogRead(joyX));
+    Serial.print(joyValX);
     Serial.print(" -> Servo1 Position: ");
     Serial.println(servo1Pos);
 
     Serial.print("Joystick Y: ");
-    Serial.print(analogRead(joyY));
+    Serial.print(joyValY);
     Serial.print(" -> Servo2 Position: ");
     Serial.println(servo2Pos);
   }
 
-  delay(50); // Small delay for stable servo movement
+  delay(25); // Small delay for stable servo movement
 }
