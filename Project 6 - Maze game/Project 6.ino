@@ -50,5 +50,5 @@ void loop()
     Serial.println(servo2Pos);
   }
 
-  delay(25); // Small delay for stable servo movement
+  delay(20); // Small delay for stable servo movement
 }
