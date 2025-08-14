@@ -6,10 +6,10 @@ Servo servo2;
 int joyXPin = A0; // Analog pin for X-axis
 int joyYPin = A1; // Analog pin for Y-axis
 
-const int servo1Min = 80;
-const int servo1Max = 105;
-const int servo2Min = 80;
-const int servo2Max = 105;
+const int servo1Min = 50;
+const int servo1Max = 100;
+const int servo2Min = 90;
+const int servo2Max = 140;
 
 unsigned long previousMillis = 0; // Timer variable for Serial output
 const long interval = 500;        // Interval for Serial output in milliseconds
@@ -17,7 +17,7 @@ const long interval = 500;        // Interval for Serial output in milliseconds
 void setup() 
 {
   Serial.begin(9600); // Initialize serial communication at 9600 bps
-  servo1.attach(3);    // Connect servo1 to digital pin 3
+  servo1.attach(4);    // Connect servo1 to digital pin 3
   servo2.attach(5);    // Connect servo2 to digital pin 5
 }
 
