@@ -53,7 +53,7 @@ void loop() {
         break;
       case 'S':
         Stop()
-          break;
+        break;
     }
   }
 }
