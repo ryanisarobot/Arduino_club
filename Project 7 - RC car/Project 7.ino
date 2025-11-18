@@ -44,7 +44,7 @@ void loop() {
         right();
         break;
       case 'S':
-        stop()
+        Stop()
           break;
     }
   }
