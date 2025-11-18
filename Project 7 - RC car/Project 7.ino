@@ -98,11 +98,4 @@ void right() {
   digitalWrite(IN4, HIGH);
 }
 
-void Stop() {
-  // All low = coast/stop
-  digitalWrite(IN1, LOW);
-  digitalWrite(IN2, LOW);
-  digitalWrite(IN3, LOW);
-  digitalWrite(IN4, LOW);
-}
 
