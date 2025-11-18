@@ -52,7 +52,7 @@ void loop() {
         right();
         break;
       case 'S':
-        Stop()
+        Stop();
         break;
     }
   }
