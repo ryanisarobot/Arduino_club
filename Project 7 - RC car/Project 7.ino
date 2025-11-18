@@ -11,6 +11,14 @@
 // HC-05 on pins 9 (RX) and 10 (TX)
 SoftwareSerial bluetoothSerial(9, 10); // RX, TX
 
+void Stop() {
+  // All low = coast/stop
+  digitalWrite(IN1, LOW);
+  digitalWrite(IN2, LOW);
+  digitalWrite(IN3, LOW);
+  digitalWrite(IN4, LOW);
+}
+
 void setup() {
   bluetoothSerial.begin(9600);  // Match HC-05 baud rate
 
