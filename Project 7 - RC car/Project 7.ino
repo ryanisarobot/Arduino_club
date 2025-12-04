@@ -1,101 +1,83 @@
-#include <SoftwareSerial.h>
-
-// Motor 1 (left)
-#define IN1 2
-#define IN2 3
-
-// Motor 2 (right)
-#define IN3 4
-#define IN4 5
-
-// HC-05 on pins 9 (RX) and 10 (TX)
-SoftwareSerial bluetoothSerial(9, 10); // RX, TX
-
-void Stop() {
-  // All low = coast/stop
-  digitalWrite(IN1, LOW);
-  digitalWrite(IN2, LOW);
-  digitalWrite(IN3, LOW);
-  digitalWrite(IN4, LOW);
-}
+#include<IRremote.h> # Libary that gives us teh functions and 
+const int RemotePin = 8; # What pin we will set the inputs that the IR sensor recieves to go to
+IRrecv irrecv(RemotePin);
+decode_results results;
+int in1=3;
+int in2=5;
+int in3=6;
+int in4=9;
 
 void setup() {
-  bluetoothSerial.begin(9600);  // Match HC-05 baud rate
-
-  pinMode(IN1, OUTPUT);
-  pinMode(IN2, OUTPUT);
-  pinMode(IN3, OUTPUT);
-  pinMode(IN4, OUTPUT);
-
-  // Start with motors stopped
-  Stop();
+  Serial.begin(9600);
+  irrecv.enableIRIn();
+  pinMode(in1, OUTPUT);
+  pinMode(in2, OUTPUT);
+  pinMode(in3, OUTPUT);
+  pinMode(in4, OUTPUT);
+    
 }
 
 void loop() {
-  if (bluetoothSerial.available() > 0) {
-    char command = bluetoothSerial.read();
-
-    // optional: print debug over USB if you want later
-    // Serial.println(command);
-    
-    switch (command) {
-      case 'F':
-        forward();
-        break;
-      case 'B':
-        back();
-        break;
-      case 'L':
-        left();
-        break;
-      case 'R':
-        right();
-        break;
-      case 'S':
-        Stop();
-        break;
+  
+    if(irrecv.decode(&results))
+      {
+        if (results.value==0xFF629D)//Press UP Button
+        { 
+          Forward();
+        }
+        else if (results.value==0xFFA857)//Press Down Button
+        { 
+          Backward();
+        }
+         else if (results.value==0xFF22DD)//Press Left Button
+        { 
+          Left();
+        }
+        else if (results.value==0xFFC23D)//Press Right Button
+        { 
+          Right();
+        }
+        else if (results.value==0xFF02FD)//Stop
+        { 
+          Stop();
+        }
+      irrecv.resume();
     }
+    }
+   
+ 
+void Backward()
+  {
+  digitalWrite(in1,HIGH);
+  digitalWrite(in2,LOW);
+  digitalWrite(in3,HIGH);
+  digitalWrite(in4,LOW);
   }
-}
-
-// ====== Movement functions using L298N pins ======
-
-void forward() {
-  // Left motor forward
-  digitalWrite(IN1, HIGH);
-  digitalWrite(IN2, LOW);
-
-  // Right motor forward
-  digitalWrite(IN3, HIGH);
-  digitalWrite(IN4, LOW);
-}
-
-void back() {
-  // Left motor backward
-  digitalWrite(IN1, LOW);
-  digitalWrite(IN2, HIGH);
-
-  // Right motor backward
-  digitalWrite(IN3, LOW);
-  digitalWrite(IN4, HIGH);
-}
-
-void left() {
-  // Spin left: left motor backward, right motor forward
-  digitalWrite(IN1, LOW);
-  digitalWrite(IN2, HIGH);
-
-  digitalWrite(IN3, HIGH);
-  digitalWrite(IN4, LOW);
-}
-
-void right() {
-  // Spin right: left motor forward, right motor backward
-  digitalWrite(IN1, HIGH);
-  digitalWrite(IN2, LOW);
-
-  digitalWrite(IN3, LOW);
-  digitalWrite(IN4, HIGH);
-}
-
-
+ void Forward()
+  {
+  digitalWrite(in1,LOW);
+  digitalWrite(in2,HIGH);
+  digitalWrite(in3,LOW);
+  digitalWrite(in4,HIGH);
+  }
+ void Stop()
+  {
+  digitalWrite(in1,LOW);
+  digitalWrite(in2,LOW);
+  digitalWrite(in3,LOW);
+  digitalWrite(in4,LOW);
+  }
+  int Left()
+    {
+    digitalWrite(in1,LOW);
+    digitalWrite(in2,LOW);
+    digitalWrite(in3,LOW);
+    digitalWrite(in4,HIGH);
+    }
+  int Right()
+    {
+    digitalWrite(in1,LOW);
+    digitalWrite(in2,HIGH);
+    digitalWrite(in3,LOW);
+    digitalWrite(in4,LOW);
+    }
