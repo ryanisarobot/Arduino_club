@@ -2,10 +2,10 @@
 const int RemotePin = 8; // What pin we will set the inputs that the IR sensor recieves to go to
 IRrecv irrecv(RemotePin); // This is teh instance of the class that we will define as "our specific IR sensor"
 decode_results results; // Holds all information decodes from IR sensor
-int in1 = 3;
-int in2 = 5;
-int in3 = 6;
-int in4 = 9;
+int in1 = 2;
+int in2 = 3;
+int in3 = 4;
+int in4 = 5;
 
 void setup() {
   Serial.begin(9600);
