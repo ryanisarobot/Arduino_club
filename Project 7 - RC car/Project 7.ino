@@ -21,7 +21,7 @@ void loop() {
   
     if(irrecv.decode(&results)) // The function inside checks if there has been a signal and returns TRUE or FALSE
       {
-        if (results.value==0xFF629D)//Press UP Button, this code is the hex code for the specific up button
+        if (results.value==0xB946FF00)//Press UP Button, this code is the hex code for the specific up button
         { 
           Forward();
         }
