@@ -1,19 +1,19 @@
-#include<IRremote.h>
+#include <IRremote.hpp>
 const int RemotePin = 8;
 IRrecv irrecv(RemotePin);
 decode_results results;
 void setup() {
-  // put your setup code here, to run once:
   Serial.begin(9600);
-  irrecv.enableIRIn();
+  IrReceiver.begin(RemotePin, ENABLE_LED_FEEDBACK); // Tells the IR sensor to start recieving signals
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-  if(irrecv.decode(&results))
-  {
-    Serial.println(results.value, HEX);
+  if (IrReceiver.decode()) { // Turns the infared signal into the HEX code
+    // Print the decoded 32-bit value in HEX
+    Serial.print("Code: 0x");
+    Serial.println(IrReceiver.decodedIRData.decodedRawData, HEX);
+
+    IrReceiver.resume();   // prepare for the next code
     delay(200);
-    irrecv.resume();
   }
 }
