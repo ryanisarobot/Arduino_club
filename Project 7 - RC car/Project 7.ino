@@ -18,38 +18,38 @@ timesincelastinput = millis(); // initialize baseline
 }
 
 void loop() {
-if(IrReceiver.decode()) // The function inside checks if there has been a signal and returns TRUE or FALSE
-{
-unsigned long code = IrReceiver.decodedIRData.decodedRawData;
+  if(IrReceiver.decode()) // The function inside checks if there has been a signal and returns TRUE or FALSE
+  {
+    unsigned long code = IrReceiver.decodedIRData.decodedRawData;
 
-if (code==0xB946FF00)//Press UP Button, this code is the hex code for the specific up button
-{
-Forward();
-}
-else if (code==0xEA15FF00)//Press Down Button
-{
-Backward();
-}
-else if (code==0xBB44FF00)//Press Left Button
-{
-Left();
-}
-else if (code==0xBC43FF00)//Press Right Button
-{
-Right();
-}
-else if (code==0xBA45FF00)//Stop
-{
-Stop();
-}
-timesincelastinput = millis();
-IrReceiver.resume(); // Returns that it is done processing and is ready for a new input
-}
-else if (millis() - timesincelastinput > delaytime)
-{
-Stop();
-timesincelastinput = millis();
-}
+    if (code==0xB946FF00)//Press UP Button, this code is the hex code for the specific up button
+    {
+      Forward();
+    }
+    else if (code==0xEA15FF00)//Press Down Button
+    {
+      Backward();
+    }
+    else if (code==0xBB44FF00)//Press Left Button
+    {
+      Left();
+    }
+    else if (code==0xBC43FF00)//Press Right Button
+    {
+      Right();
+    }
+    else if (code==0xBA45FF00)//Stop
+    {
+      Stop();
+    }
+    timesincelastinput = millis();
+    IrReceiver.resume(); // Returns that it is done processing and is ready for a new input
+  }
+  else if (millis() - timesincelastinput > delaytime)
+  {
+    Stop();
+    timesincelastinput = millis();
+  }
 }
 
 // Movement functions
