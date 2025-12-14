@@ -60,15 +60,15 @@ digitalWrite(in1,LOW);
 digitalWrite(in2,HIGH);
 digitalWrite(in3,HIGH);
 digitalWrite(in4,LOW);
+Serial.println("back");
 }
 void Forward()
 {
-  // LEFT
 digitalWrite(in1,HIGH);
 digitalWrite(in2,LOW);
-  // RIGHT
 digitalWrite(in3,LOW);
 digitalWrite(in4,HIGH);
+Serial.println("forward");
 }
 void Stop()
 {
@@ -83,6 +83,7 @@ digitalWrite(in1,HIGH);
 digitalWrite(in2,LOW);
 digitalWrite(in3,HIGH);
 digitalWrite(in4,LOW);
+Serial.println("right");
 }
 void Right()
 {
@@ -90,4 +91,5 @@ digitalWrite(in1,LOW);
 digitalWrite(in2,HIGH);
 digitalWrite(in3,LOW);
 digitalWrite(in4,HIGH);
+Serial.println("left");
 }
