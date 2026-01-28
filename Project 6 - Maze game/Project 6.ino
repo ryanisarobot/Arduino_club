@@ -3,13 +3,13 @@
 Servo servo1;
 Servo servo2;
 
-int joyXPin = A0; // Analog pin for X-axis
-int joyYPin = A1; // Analog pin for Y-axis
+int joyXPin = A5; // Analog pin for X-axis
+int joyYPin = A4; // Analog pin for Y-axis
 
-const int servo1Min = 50;
-const int servo1Max = 100;
-const int servo2Min = 90;
-const int servo2Max = 140;
+const int servo1Min = 70;
+const int servo1Max = 90;
+const int servo2Min = 105;
+const int servo2Max = 115;
 
 unsigned long previousMillis = 0; // Timer variable for Serial output
 const long interval = 500;        // Interval for Serial output in milliseconds
@@ -17,8 +17,8 @@ const long interval = 500;        // Interval for Serial output in milliseconds
 void setup() 
 {
   Serial.begin(9600); // Initialize serial communication at 9600 bps
-  servo1.attach(4);    // Connect servo1 to digital pin 3
-  servo2.attach(5);    // Connect servo2 to digital pin 5
+  servo1.attach(6);    // Connect servo1 to digital pin 3
+  servo2.attach(7);    // Connect servo2 to digital pin 5
 }
 
 void loop()
@@ -38,6 +38,8 @@ void loop()
   {
     previousMillis = currentMillis; // Update the timer
 
+    Serial.print(analogRead(A0));
+    Serial.print(analogRead(A1));
     // Print joystick and servo positions to Serial Monitor
     Serial.print("Joystick X: ");
     Serial.print(joyValX);
